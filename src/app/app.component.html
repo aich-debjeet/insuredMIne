@@ -1,21 +1,48 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<header class="header">
+  <!-- desktop:logged-in:top-navigation -->
+  <div class="nav-bar">
 
+    <!-- desktop:logged-in:top-navigation:left -->
+    <div class="nav-menu">
+      <ul class="nav-list m-l-8">
+        <li class="nav__item">
+          <a class="nav__link nav__link--text" routerLink="/home">Home</a>
+        </li>
+        <li class="nav__item" *ngIf="user && user.loggedIn">
+          <a class="nav__link nav__link--text" routerLink="/pics">Gallery</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link nav__link--text" routerLink='/about'>About</a>
+        </li>
+        <li class="nav__item" *ngIf="user && user.loggedIn">
+          <span>
+            {{user?.username}} account
+          </span>
+        </li>
+      </ul><!-- first nav end -->
+    </div>
+    <div class="nav-right">
+      <a style="display: flex;
+      flex-direction: row;
+      margin-top: 8px;" routerLink='/login'  *ngIf="user && !user.loggedIn">Login</a>
+      <a style="display: flex;
+            flex-direction: row;
+            margin-top: 8px;" routerLink='/login'  *ngIf="user && user.loggedIn"
+        (click)="logout(user)">Logout</a>
+    </div>
+
+
+  </div>
+</header>
 <router-outlet></router-outlet>
+
+<section class="m-footer">
+  <ul class="m-footer-nav m-footer-nav-inline">
+    <li>footer info1</li>
+    <li>footer info 2</li>
+  </ul>
+  <span class="copyright">&#169; INsuredMine {{'2020'}}</span>
+</section>
+
+
+<div class="clearfix"></div>
